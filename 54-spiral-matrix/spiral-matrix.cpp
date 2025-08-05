@@ -2,36 +2,45 @@ class Solution {
 public:
     vector<int> spiralOrder(vector<vector<int>>& matrix) {
         vector<int> ans;
-        int top = 0, bottom = matrix.size() - 1;
-        int left = 0, right = matrix[0].size() - 1;
-        int dir = 0;
+        int row=matrix.size();
+        int col=matrix[0].size();
 
-        while (left <= right && top <= bottom) {
-            if (dir == 0) { // Left to Right
-                for (int col = left; col <= right; col++) {
-                    ans.push_back(matrix[top][col]);
-                }
-                top++;
-            } 
-            else if (dir == 1) { // Top to Bottom
-                for (int row = top; row <= bottom; row++) {
-                    ans.push_back(matrix[row][right]);
-                }
-                right--;
-            } 
-            else if (dir == 2) { // Right to Left
-                for (int col = right; col >= left; col--) {
-                    ans.push_back(matrix[bottom][col]);
-                }
-                bottom--;
-            } 
-            else if (dir == 3) { // Bottom to Top
-                for (int row = bottom; row >= top; row--) {
-                    ans.push_back(matrix[row][left]);
-                }
-                left++;
+        int startingRow=0;
+        int startingCol=0;
+        int endingRow=row-1;
+        int endingCol=col-1;
+
+        int count=0;
+        int total=row*col;
+while (count < total) {
+
+            // 1. Traverse starting row
+            for (int idx = startingCol; idx <= endingCol && count < total; idx++) {
+                ans.push_back(matrix[startingRow][idx]);
+                count++;
             }
-            dir = (dir + 1) % 4;
+            startingRow++;
+
+            // 2. Traverse ending column
+            for (int idx = startingRow; idx <= endingRow && count < total; idx++) {
+                ans.push_back(matrix[idx][endingCol]);
+                count++;
+            }
+            endingCol--;
+
+            // 3. Traverse ending row (right to left)
+            for (int idx = endingCol; idx >= startingCol && count < total; idx--) {
+                ans.push_back(matrix[endingRow][idx]);
+                count++;
+            }
+            endingRow--;
+
+            // 4. Traverse starting column (bottom to top)
+            for (int idx = endingRow; idx >= startingRow && count < total; idx--) {
+                ans.push_back(matrix[idx][startingCol]);
+                count++;
+            }
+            startingCol++;
         }
 
         return ans;
