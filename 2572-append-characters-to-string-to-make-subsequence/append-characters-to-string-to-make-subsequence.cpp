@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int appendCharacters(string s, string t) {
+        int m=s.size();
+        int n=t.size();
+
+        int i=0; //ptr for s
+        int j=0; //ptr for t
+
+        while(i<m && j<n)
+        {
+            if(s[i]==t[j])
+            {
+                i++;
+                j++;
+            }
+            else{
+                i++;
+            }
+        
+       }
+        return n-j;
+    }
+};
