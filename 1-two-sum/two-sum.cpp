@@ -4,15 +4,15 @@ public:
         map<int,int>mpp;
         for (int i=0;i<nums.size();i++)
         {
-            int num=nums[i];
-            int mpreneeded=target-num;
-            if(mpp.find(mpreneeded)!=mpp.end())
-            {
-                return {mpp[mpreneeded],i};
-
-            }
-            mpp[num]=i;
+        int remaining=target-nums[i];
+        if(mpp.find(remaining)!=mpp.end())
+        {
+            return {mpp[remaining],i};
         }
-        return {-1,-1};
+        else{
+            mpp[nums[i]]=i;
+        }
+        }
+        return {};
     }
 };
