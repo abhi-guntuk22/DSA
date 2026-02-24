@@ -1,35 +1,27 @@
 class Solution {
 public:
     int majorityElement(vector<int>& nums) {
-        int cnt=0;
-        int el;
-        for (int i=0;i<nums.size();i++)
+       
+       int cnt=0;
+       int candidate=0;
+
+       for(int i=0;i<nums.size();i++)
+       {
+        if(cnt==0)
         {
-            if(cnt==0){
-                cnt=1;
-                el=nums[i];
-            }
-            else if(nums[i]==el)
+            candidate=nums[i];   //ager cnt 0 he to curr ele ko candidate assign kr
+            cnt=1;
+        }
+        else{
+            if(nums[i]==candidate)  // ager ele aur candidate same he to cnt ko bada
             {
                 cnt++;
-
             }
-            else{
+            else{    // nhi sae to ghata
                 cnt--;
-
             }
         }
-        int cnt1;
-        for(int i=0;i<nums.size();i++)
-        {
-         if(nums[i]==el) cnt1++;
-
-        }
-        if(cnt1 >(nums.size())/2)
-        {
-            return el;
-
-        }
-        else return -1;
+       }
+       return candidate; //jo last me candidate hoga wahi to apna ans hoga 
     }
 };
