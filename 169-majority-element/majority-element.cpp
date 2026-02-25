@@ -15,7 +15,7 @@ public:
         else{
             if(nums[i]==candidate)  // ager ele aur candidate same he to cnt ko bada
             {
-                cnt++;
+            cnt++;
             }
             else{    // nhi sae to ghata
                 cnt--;
