@@ -11,7 +11,7 @@ public:
             mp[t].push_back(s);
          }
 
-       vector<vector<string>>res;
+       vector<vector<string>>res; 
        for(auto it :mp)
        {
         res.push_back(it.second);
