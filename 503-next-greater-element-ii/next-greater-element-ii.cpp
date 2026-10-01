@@ -21,11 +21,10 @@ public:
             {
                 st.pop();
             }
-           if(i<n)
-           {
+          
             if(st.empty()) nge[i%n]=-1;
             else nge[i%n]=st.top();
-           }
+           
             st.push(nums[i%n]);
         }
        return nge;
